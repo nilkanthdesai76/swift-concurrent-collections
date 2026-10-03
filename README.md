@@ -1,5 +1,6 @@
 # ConcurrentCollections 🛡️
 
+[![CI](https://github.com/nilkanthdesai76/swift-concurrent-collections/actions/workflows/ci.yml/badge.svg)](https://github.com/nilkanthdesai76/swift-concurrent-collections/actions)
 High-performance, thread-safe collections (`ThreadSafeDictionary`, `ThreadSafeArray`, `@Atomic`) for Swift utilizing concurrent dispatch queues with write barriers.
 
 [![Swift](https://img.shields.io/badge/Swift-5.9%20%7C%206.0-orange?style=flat-square&logo=swift)](https://swift.org)
