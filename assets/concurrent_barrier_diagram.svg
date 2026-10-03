@@ -1,0 +1,65 @@
+<svg width="1000" height="290" viewBox="0 0 1000 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ccbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="rGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="wGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="290" rx="16" fill="url(#ccbg)" stroke="#334155"/>
+
+  <!-- Left: Concurrent Reads (Parallel) -->
+  <g transform="translate(60, 45)">
+    <rect width="250" height="200" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="125" y="32" font-family="-apple-system, sans-serif" font-size="16" fill="#38bdf8" font-weight="700" text-anchor="middle">Concurrent Reads</text>
+    <line x1="20" y1="46" x2="230" y2="46" stroke="#334155"/>
+    
+    <rect x="25" y="65" width="200" height="30" rx="6" fill="url(#rGrad)"/>
+    <text x="125" y="85" font-family="monospace" font-size="12" fill="#ffffff" text-anchor="middle">Thread 1: dict["key"]</text>
+
+    <rect x="25" y="105" width="200" height="30" rx="6" fill="url(#rGrad)"/>
+    <text x="125" y="125" font-family="monospace" font-size="12" fill="#ffffff" text-anchor="middle">Thread 2: dict.count</text>
+
+    <rect x="25" y="145" width="200" height="30" rx="6" fill="url(#rGrad)"/>
+    <text x="125" y="165" font-family="monospace" font-size="12" fill="#ffffff" text-anchor="middle">Thread 3: dict.values</text>
+    <text x="125" y="192" font-family="-apple-system, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Execute in parallel without waiting</text>
+  </g>
+
+  <!-- Barrier Arrow -->
+  <path d="M 320 145 L 390 145" stroke="#f43f5e" stroke-width="3" stroke-dasharray="6 6"/>
+  <polygon points="395,145 385,139 385,151" fill="#f43f5e"/>
+
+  <!-- Center: Barrier Mutex Gate -->
+  <g transform="translate(400, 45)">
+    <rect width="240" height="200" rx="12" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+    <text x="120" y="32" font-family="-apple-system, sans-serif" font-size="16" fill="#f43f5e" font-weight="700" text-anchor="middle">Dispatch Barrier</text>
+    <line x1="20" y1="46" x2="220" y2="46" stroke="#334155"/>
+    <rect x="20" y="65" width="200" height="85" rx="8" fill="url(#wGrad)"/>
+    <text x="120" y="100" font-family="monospace" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle">EXCLUSIVE WRITE</text>
+    <text x="120" y="125" font-family="monospace" font-size="11" fill="#fecdd3" text-anchor="middle">flags: .barrier</text>
+    <text x="120" y="175" font-family="-apple-system, sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle">Pauses all threads until write finishes</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 650 145 L 720 145" stroke="#4ade80" stroke-width="3" stroke-dasharray="6 6"/>
+  <polygon points="725,145 715,139 715,151" fill="#4ade80"/>
+
+  <!-- Right: Storage Array/Dictionary -->
+  <g transform="translate(730, 45)">
+    <rect width="210" height="200" rx="12" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
+    <text x="105" y="32" font-family="-apple-system, sans-serif" font-size="16" fill="#4ade80" font-weight="700" text-anchor="middle">Protected State</text>
+    <line x1="20" y1="46" x2="190" y2="46" stroke="#334155"/>
+    <text x="25" y="80" font-family="monospace" font-size="12" fill="#cbd5e1">[Key: Element]</text>
+    <text x="25" y="110" font-family="monospace" font-size="12" fill="#cbd5e1">[Element]</text>
+    <text x="25" y="140" font-family="monospace" font-size="12" fill="#cbd5e1">Atomic&lt;Value&gt;</text>
+    <text x="25" y="175" font-family="-apple-system, sans-serif" font-size="12" fill="#4ade80" font-weight="600">✓ 100% Thread-Safe</text>
+  </g>
+</svg>
