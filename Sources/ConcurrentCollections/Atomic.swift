@@ -23,6 +23,10 @@ public final class Atomic<Value>: @unchecked Sendable {
         }
     }
 
+    public var projectedValue: Atomic<Value> {
+        self
+    }
+
     /// Mutates the wrapped value atomically within a closure.
     @discardableResult
     public func mutate<Result>(_ mutation: (inout Value) throws -> Result) rethrows -> Result {
